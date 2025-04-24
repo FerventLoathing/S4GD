@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2a891c7c63049a645a79deaa402d5f14
+guid: 549cd205dd64b1c42982cf3564bce885
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 31
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,85 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ProgArt Squares_0
+      name: ProgArt Tiles 2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 32
-        height: 32
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c925de802b96ea342980e44e90b3e202
-      internalID: 215286349
+      spriteID: 846bb73f25dbc2c4f8ad73ad49650c47
+      internalID: -719289075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ProgArt Squares_1
+      name: ProgArt Tiles 2_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a776820ec8ff15e4f89a34cddd36feab
-      internalID: 931996744
+      spriteID: 1f669e72b1be5ed4093c0e2781529f58
+      internalID: -90714370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ProgArt Squares_2
+      name: ProgArt Tiles 2_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 523144f89bdfa0643aa0ae697a115d10
-      internalID: 1382791096
+      spriteID: acecfc6b33db8a445a5c4780be2b35bd
+      internalID: 256976211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ProgArt Squares_3
+      name: ProgArt Tiles 2_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcefef263b7e71d4492729774391a0fb
-      internalID: -621282612
+      spriteID: d4b84fa5e9f96e3439f13ae4280a7a19
+      internalID: 1220291130
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ProgArt Squares_0: 215286349
-      ProgArt Squares_1: 931996744
-      ProgArt Squares_2: 1382791096
-      ProgArt Squares_3: -621282612
+      ProgArt Tiles 2_0: -719289075
+      ProgArt Tiles 2_1: -90714370
+      ProgArt Tiles 2_2: 256976211
+      ProgArt Tiles 2_3: 1220291130
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
