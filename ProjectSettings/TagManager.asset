@@ -11,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemies
+  - Terrain
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: Mobs
     uniqueID: 3795828513
+    locked: 0
+  - name: Player
+    uniqueID: 2655203613
     locked: 0
