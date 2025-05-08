@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed;
     Rigidbody2D rb;
     Animator myAnimator;
+    [SerializeField] GameObject attack;
+    [SerializeField] Transform attackOrigin;
+    Vector2 lastMoveInput;
 
     void Start()
     {
@@ -27,6 +30,11 @@ public class PlayerController : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
+    void OnFire(InputValue value)
+    {
+        Instantiate(attack, attackOrigin.position, transform.rotation);
+    }
+
     void Walk()
     {
         //Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
@@ -36,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(moveInput.x) > Mathf.Epsilon | Mathf.Abs(moveInput.y) > Mathf.Epsilon)
         {
             myAnimator.SetBool("isMoving", true);
+            lastMoveInput = moveInput;
         }
         else
         {
@@ -50,5 +59,10 @@ public class PlayerController : MonoBehaviour
             //this flips the player sprite on the vertical axis, according to the movement command
             transform.localScale = new Vector2(Mathf.Sign(moveInput.x), 1f);
         }
+    }
+
+    public Vector2 getLastMoveInput()
+    {
+        return lastMoveInput;
     }
 }
