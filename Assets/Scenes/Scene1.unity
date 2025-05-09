@@ -8883,8 +8883,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6001521427079630981, guid: 8d02c48e80b1f9148acd0d52b2c3efeb, type: 3}
-      propertyPath: moveSpeed
-      value: 6
+      propertyPath: attackRootDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001521427079630981, guid: 8d02c48e80b1f9148acd0d52b2c3efeb, type: 3}
+      propertyPath: attackLockoutDuration
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,13 +5,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    Vector2 moveInput;
-    [SerializeField] float moveSpeed;
     Rigidbody2D rb;
     Animator myAnimator;
+
+    [Header("movement")]
+    [SerializeField] float moveSpeed;
+    Vector2 moveInput;
+    Vector2 lastMoveInput;
+
+    [Header("attack")]
     [SerializeField] GameObject attack;
     [SerializeField] Transform attackOrigin;
-    Vector2 lastMoveInput;
+    [SerializeField] float attackLockoutDuration = 0.1f;
+    float attackLockoutTimer;
+    [SerializeField] float attackRootDuration = 0.2f;
+    float attackRootTimer;
 
     void Start()
     {
@@ -25,6 +33,12 @@ public class PlayerController : MonoBehaviour
         FlipSprite();
     }
 
+    void FixedUpdate()
+    {
+        attackLockoutTimer += Time.deltaTime;
+        attackRootTimer += Time.deltaTime;
+    }
+
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
@@ -32,14 +46,28 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue value)
     {
+        if (attackLockoutDuration > attackLockoutTimer)
+        {
+            return;
+        }
         Instantiate(attack, attackOrigin.position, transform.rotation);
+
+        attackLockoutTimer = 0f;
+        attackRootTimer = 0f;
     }
 
     void Walk()
     {
         //Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
         Vector2 playerVelocity = moveInput * moveSpeed;
+        if (attackRootDuration > attackRootTimer)
+        {
+            playerVelocity = new Vector2(0, 0);
+        }
+
         rb.velocity = playerVelocity;
+
+
 
         if (Mathf.Abs(moveInput.x) > Mathf.Epsilon | Mathf.Abs(moveInput.y) > Mathf.Epsilon)
         {
