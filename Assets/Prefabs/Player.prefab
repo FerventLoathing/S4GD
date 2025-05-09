@@ -218,6 +218,8 @@ MonoBehaviour:
   moveSpeed: 6
   attack: {fileID: 4277567292424871265, guid: 6522ce1e4f055314780eaf77f0476424, type: 3}
   attackOrigin: {fileID: 6424689553759312781}
+  attackLockoutDuration: 0.1
+  attackRootDuration: 0.2
 --- !u!1 &2566441315439414924
 GameObject:
   m_ObjectHideFlags: 0

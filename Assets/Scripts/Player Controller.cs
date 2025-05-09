@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
     {
         Walk();
         FlipSprite();
+        if(attackLockoutTimer >= attackLockoutDuration)
+        {
+            myAnimator.SetBool("isAttacking", false);
+        }
     }
 
     void FixedUpdate()
@@ -52,6 +56,7 @@ public class PlayerController : MonoBehaviour
         }
         Instantiate(attack, attackOrigin.position, transform.rotation);
 
+        myAnimator.SetBool("isAttacking", true);
         attackLockoutTimer = 0f;
         attackRootTimer = 0f;
     }
@@ -69,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (Mathf.Abs(moveInput.x) > Mathf.Epsilon | Mathf.Abs(moveInput.y) > Mathf.Epsilon)
+        if ((Mathf.Abs(moveInput.x) > Mathf.Epsilon | Mathf.Abs(moveInput.y) > Mathf.Epsilon) && attackRootDuration <= attackRootTimer)
         {
             myAnimator.SetBool("isMoving", true);
             lastMoveInput = moveInput;
