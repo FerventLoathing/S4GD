@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float attackRootDuration = 0.2f;
     float attackRootTimer;
     [SerializeField] float rangedAttackCooldown = 5f;
-    float rangedAttackTimer;
+    float rangedAttackTimer = 100;
+    bool isMeleeAttackQueued = false;
 
     void Start()
     {
@@ -45,7 +46,12 @@ public class PlayerController : MonoBehaviour
         attackLockoutTimer += Time.deltaTime;
         attackRootTimer += Time.deltaTime;
         rangedAttackTimer += Time.deltaTime;
-        Debug.Log(rangedAttackTimer);
+        //Debug.Log(rangedAttackTimer);
+
+        if(attackLockoutTimer >= attackLockoutDuration && isMeleeAttackQueued)
+        {
+            OnAttackMelee();
+        }
     }
 
     void OnMove(InputValue value)
@@ -53,10 +59,12 @@ public class PlayerController : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
-    void OnAttackMelee(InputValue value)
+    void OnAttackMelee()
     {
+        isMeleeAttackQueued = false;
         if (attackLockoutDuration > attackLockoutTimer)
         {
+            isMeleeAttackQueued = true;
             return;
         }
         Instantiate(attack, attackOrigin.position, transform.rotation);
@@ -64,6 +72,7 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetBool("isAttacking", true);
         attackLockoutTimer = 0f;
         attackRootTimer = 0f;
+
     }
 
     void OnAttackRanged(InputValue value)
