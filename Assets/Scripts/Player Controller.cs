@@ -30,7 +30,9 @@ public class PlayerController : MonoBehaviour
     float staminaCurrent = 0;
     [SerializeField] float staminaMax = 100f;
     [SerializeField] float staminaRecoveryRate = 10f;
-    [SerializeField] float staminaOverspendPenalty = 25f;
+    [SerializeField] float staminaRecoveryDelay;
+    float staminaRecoveryDelayTimer;
+    bool staminaRecoveryPaused;
 
     void Start()
     {
@@ -49,8 +51,20 @@ public class PlayerController : MonoBehaviour
         
         if(staminaCurrent < staminaMax)
         {
-            staminaCurrent += staminaRecoveryRate * Time.deltaTime;
-            staminaCurrent = Mathf.Clamp(staminaCurrent += staminaRecoveryRate * Time.deltaTime, staminaCurrent, staminaMax);
+            if (!staminaRecoveryPaused)
+            {
+                staminaCurrent += staminaRecoveryRate * Time.deltaTime;
+                staminaCurrent = Mathf.Clamp(staminaCurrent += staminaRecoveryRate * Time.deltaTime, staminaCurrent, staminaMax);
+            }
+
+            else
+            {
+                staminaRecoveryDelayTimer += Time.deltaTime;
+                if(staminaRecoveryDelayTimer >= staminaRecoveryDelay)
+                {
+                    staminaRecoveryPaused = false;
+                }
+            }
         }
     }
 
@@ -87,10 +101,7 @@ public class PlayerController : MonoBehaviour
         }
 
         staminaCurrent -= meleeStaminaCost;
-        if(staminaCurrent < Mathf.Epsilon)
-        {
-            staminaCurrent -= staminaOverspendPenalty;
-        }
+        PauseStaminaRecovery();
 
         Instantiate(attack, attackOrigin.position, transform.rotation);
 
@@ -142,6 +153,12 @@ public class PlayerController : MonoBehaviour
             //this flips the player sprite on the vertical axis, according to the movement command
             transform.localScale = new Vector2(Mathf.Sign(moveInput.x), 1f);
         }
+    }
+
+    private void PauseStaminaRecovery()
+    {
+        staminaRecoveryPaused = true;
+        staminaRecoveryDelayTimer = 0f;
     }
 
     public Vector2 GetLastMoveInput()
