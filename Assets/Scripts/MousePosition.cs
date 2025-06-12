@@ -8,14 +8,15 @@ public class MousePosition : MonoBehaviour
     Vector3 mouseWorldPosition;
     void Update()
     {
-        //Debug.Log(mainCamera.ScreenToWorldPoint(Input.mousePosition));
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0f;
         transform.position = mouseWorldPosition;
+        //Debug.Log(mouseWorldPosition);
     }
 
     public Vector2 GetMousePosition()
     {
+        Debug.Log(mouseWorldPosition);
         return new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);
     }
 }

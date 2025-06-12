@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
 
     [Header("attack")]
     [SerializeField] GameObject attack;
+    [SerializeField] GameObject attack2;
     [SerializeField] Transform attackOrigin;
     [SerializeField] float attackLockoutDuration = 0.1f;
     float attackLockoutTimer;
     [SerializeField] float attackRootDuration = 0.2f;
     float attackRootTimer;
+    [SerializeField] float rangedAttackCooldown = 5f;
+    float rangedAttackTimer;
 
     void Start()
     {
@@ -41,6 +44,8 @@ public class PlayerController : MonoBehaviour
     {
         attackLockoutTimer += Time.deltaTime;
         attackRootTimer += Time.deltaTime;
+        rangedAttackTimer += Time.deltaTime;
+        Debug.Log(rangedAttackTimer);
     }
 
     void OnMove(InputValue value)
@@ -48,7 +53,7 @@ public class PlayerController : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
-    void OnFire(InputValue value)
+    void OnAttackMelee(InputValue value)
     {
         if (attackLockoutDuration > attackLockoutTimer)
         {
@@ -60,6 +65,17 @@ public class PlayerController : MonoBehaviour
         attackLockoutTimer = 0f;
         attackRootTimer = 0f;
     }
+
+    void OnAttackRanged(InputValue value)
+    {
+        if (rangedAttackCooldown > rangedAttackTimer)
+        {
+            return;
+        }
+        Instantiate(attack2, attackOrigin.position, transform.rotation);
+        rangedAttackTimer = 0f;
+    }
+
 
     void Walk()
     {
@@ -97,5 +113,13 @@ public class PlayerController : MonoBehaviour
     public Vector2 getLastMoveInput()
     {
         return lastMoveInput;
+    }
+    public float getRangedAttackCooldown()
+    {
+        return rangedAttackCooldown;
+    }
+    public float getRangedAttackTimer()
+    {
+        return rangedAttackTimer;
     }
 }
