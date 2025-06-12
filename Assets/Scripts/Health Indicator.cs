@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReloadIndicator : MonoBehaviour
+public class HealthIndicator : MonoBehaviour
 {
     float maxValue;
     [SerializeField] PlayerController player;

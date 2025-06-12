@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 6522058142960398203}
   - component: {fileID: 1116177223312934684}
   m_Layer: 0
-  m_Name: ProgArt Palette
+  m_Name: Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

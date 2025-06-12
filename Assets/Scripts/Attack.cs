@@ -14,7 +14,7 @@ public class Attack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerController>();
-        attackDirection = player.getLastMoveInput();
+        attackDirection = player.GetLastMoveInput();
         Destroy(gameObject, projectileLifeDuration);
         FlipSprite();
     }

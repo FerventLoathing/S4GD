@@ -24,6 +24,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rangedAttackCooldown = 5f;
     float rangedAttackTimer = 100;
     bool isMeleeAttackQueued = false;
+    [SerializeField] float meleeStaminaCost = 20f;
+
+    [Header("Stamina")]
+    float staminaCurrent = 0;
+    [SerializeField] float staminaMax = 100f;
+    [SerializeField] float staminaRecoveryRate = 10f;
+    [SerializeField] float staminaOverspendPenalty = 25f;
 
     void Start()
     {
@@ -38,6 +45,12 @@ public class PlayerController : MonoBehaviour
         if(attackLockoutTimer >= attackLockoutDuration)
         {
             myAnimator.SetBool("isAttacking", false);
+        }
+        
+        if(staminaCurrent < staminaMax)
+        {
+            staminaCurrent += staminaRecoveryRate * Time.deltaTime;
+            staminaCurrent = Mathf.Clamp(staminaCurrent += staminaRecoveryRate * Time.deltaTime, staminaCurrent, staminaMax);
         }
     }
 
@@ -61,12 +74,24 @@ public class PlayerController : MonoBehaviour
 
     void OnAttackMelee()
     {
+        if(staminaCurrent < Mathf.Epsilon)
+        {
+            return;
+        }
+
         isMeleeAttackQueued = false;
         if (attackLockoutDuration > attackLockoutTimer)
         {
             isMeleeAttackQueued = true;
             return;
         }
+
+        staminaCurrent -= meleeStaminaCost;
+        if(staminaCurrent < Mathf.Epsilon)
+        {
+            staminaCurrent -= staminaOverspendPenalty;
+        }
+
         Instantiate(attack, attackOrigin.position, transform.rotation);
 
         myAnimator.SetBool("isAttacking", true);
@@ -119,16 +144,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public Vector2 getLastMoveInput()
+    public Vector2 GetLastMoveInput()
     {
         return lastMoveInput;
     }
-    public float getRangedAttackCooldown()
+    public float GetRangedAttackCooldown()
     {
         return rangedAttackCooldown;
     }
-    public float getRangedAttackTimer()
+    public float GetRangedAttackTimer()
     {
         return rangedAttackTimer;
+    }
+
+    public float GetStaminaCurrent()
+    {
+        return staminaCurrent;
+    }
+
+    public float GetStaminaMax()
+    {
+        return staminaMax;
     }
 }

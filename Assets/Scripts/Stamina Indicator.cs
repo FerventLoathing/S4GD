@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReloadIndicator : MonoBehaviour
+public class StaminaIndicator : MonoBehaviour
 {
     float maxValue;
     [SerializeField] PlayerController player;
@@ -11,11 +11,11 @@ public class ReloadIndicator : MonoBehaviour
     void Start()
     {
         image = this.GetComponent<Image>();
-        maxValue = player.GetRangedAttackCooldown();
+        maxValue = player.GetStaminaMax();
     }
 
     void Update()
     {
-        image.fillAmount = Mathf.Clamp(player.GetRangedAttackTimer() / maxValue, 0, 1);
+        image.fillAmount = Mathf.Clamp(player.GetStaminaCurrent() / maxValue, 0, 1);
     }
 }
