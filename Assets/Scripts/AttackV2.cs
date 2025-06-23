@@ -33,4 +33,17 @@ public class AttackV2 : MonoBehaviour
     {
         rb.velocity = (attackDirection * projectileSpeed);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject, 0.05f);
+        }
+
+        if (collision.gameObject.tag == "Terrain")
+        {
+            Destroy(gameObject, 0.05f);
+        }
+    }
 }

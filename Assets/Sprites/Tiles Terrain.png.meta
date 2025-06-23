@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cad93b4622a943e4fbb3463c2bea97eb
+guid: 1ecd535123f1d9845bd343735cc2b0b9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 19.75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_0
+      name: correct_one_copy-export_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 32
-        height: 64
+        x: 2
+        y: 118
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdde3b5a18eb5a54a91b2fe56a1f91ee
-      internalID: -260631722
+      spriteID: 5438b4faebcfac5448bc7f219f69bf38
+      internalID: -1863771598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_1
+      name: correct_one_copy-export_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 192
-        width: 32
-        height: 64
+        y: 118
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2531d8b28a341834ea66aa7038b563d4
-      internalID: 2114447143
+      spriteID: 44f6516dcdc6aa04cbf95f70abe74b4a
+      internalID: -738463458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_2
+      name: correct_one_copy-export_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 192
-        width: 32
-        height: 64
+        x: 62
+        y: 118
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e3be783bd3e0ad4eb3657e5cc159d9f
-      internalID: 2032925049
+      spriteID: 881c1f3810ed3a045bd7502d1777c458
+      internalID: -689480431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_3
+      name: correct_one_copy-export_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
-        width: 32
-        height: 64
+        x: 2
+        y: 88
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,41 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8f8397f56123f7418309cd0618537d5
-      internalID: 1420328367
+      spriteID: 1ea1002af44b5414fa15c40bf10e7060
+      internalID: 1099346702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4eaf1550d93505e4ba6896cc051c50a1
-      internalID: -2085969514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walking_cycle_player-sheet_5
+      name: correct_one_copy-export_4
       rect:
         serializedVersion: 2
         x: 32
-        y: 128
-        width: 32
-        height: 64
+        y: 88
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cb546b999e2c39459cf8bbe2f08f8dc
-      internalID: 1303051569
+      spriteID: 1a5050dcf1703814299c9c58d9b9888a
+      internalID: 218620965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_6
+      name: correct_one_copy-export_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 32
-        height: 64
+        x: 62
+        y: 88
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f38c8c07071a7a4793d65d6ee8245cb
-      internalID: 1021613537
+      spriteID: 808e2daf10246b64ab7c3561be12b190
+      internalID: -1249499448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_7
+      name: correct_one_copy-export_6
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
-        width: 32
-        height: 64
+        x: 2
+        y: 58
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,41 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a688c90432868374e9c91ade08d71877
-      internalID: 1947593015
+      spriteID: 9ae12eedf8e01cd44a0679144bcd2825
+      internalID: 1596695114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8c316bcbc2b1a34ab023b184a7632df
-      internalID: 346114770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walking_cycle_player-sheet_9
+      name: correct_one_copy-export_7
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
-        width: 32
-        height: 64
+        y: 58
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1eea8736599912442892a6fcbf4f8df1
-      internalID: -1793369559
+      spriteID: 24a3604d46c6a354c8eb9e42733d37e6
+      internalID: -130504043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_10
+      name: correct_one_copy-export_8
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 64
+        x: 61
+        y: 58
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a6f113e95c407349a33724c1178ba49
-      internalID: -1738806457
+      spriteID: f7f6bf4cbbb8f5042b72656423b6919b
+      internalID: 1605168992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_11
+      name: correct_one_copy-export_9
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 64
+        x: 2
+        y: 28
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,41 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50e6ba7c3fb7b734c903229c071e017c
-      internalID: -841609106
+      spriteID: edcd04bcdd65f684b92fa3839fcd52ea
+      internalID: 505064205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c0c21821b29ff243afcf4807211ecd5
-      internalID: 1467665289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walking_cycle_player-sheet_13
+      name: correct_one_copy-export_10
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
-        width: 32
-        height: 64
+        y: 28
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52c63c84418566d459dcd88d47e453fb
-      internalID: -1331792160
+      spriteID: f66f95ceec381a748961412b6ac66573
+      internalID: 1365633275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_14
+      name: correct_one_copy-export_11
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 64
+        x: 61
+        y: 28
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ef6e8801c183964b9df94f0d5ef629d
-      internalID: 2074125256
+      spriteID: db06ad34956ba244fa699f1f4fc70f61
+      internalID: -1493790121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walking_cycle_player-sheet_15
+      name: correct_one_copy-export_12
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 64
+        x: 2
+        y: 4
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,8 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84f19c845a194014e8c290924691c559
-      internalID: 1391912095
+      spriteID: d903fd1095a8d2a469614ca6c7304b86
+      internalID: 703045826
       vertices: []
       indices: 
       edges: []
@@ -456,22 +393,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walking_cycle_player-sheet_0: -260631722
-      walking_cycle_player-sheet_1: 2114447143
-      walking_cycle_player-sheet_10: -1738806457
-      walking_cycle_player-sheet_11: -841609106
-      walking_cycle_player-sheet_12: 1467665289
-      walking_cycle_player-sheet_13: -1331792160
-      walking_cycle_player-sheet_14: 2074125256
-      walking_cycle_player-sheet_15: 1391912095
-      walking_cycle_player-sheet_2: 2032925049
-      walking_cycle_player-sheet_3: 1420328367
-      walking_cycle_player-sheet_4: -2085969514
-      walking_cycle_player-sheet_5: 1303051569
-      walking_cycle_player-sheet_6: 1021613537
-      walking_cycle_player-sheet_7: 1947593015
-      walking_cycle_player-sheet_8: 346114770
-      walking_cycle_player-sheet_9: -1793369559
+      correct_one_copy-export_0: -1863771598
+      correct_one_copy-export_1: -738463458
+      correct_one_copy-export_10: 1365633275
+      correct_one_copy-export_11: -1493790121
+      correct_one_copy-export_12: 703045826
+      correct_one_copy-export_2: -689480431
+      correct_one_copy-export_3: 1099346702
+      correct_one_copy-export_4: 218620965
+      correct_one_copy-export_5: -1249499448
+      correct_one_copy-export_6: 1596695114
+      correct_one_copy-export_7: -130504043
+      correct_one_copy-export_8: 1605168992
+      correct_one_copy-export_9: 505064205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
