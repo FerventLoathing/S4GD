@@ -34,14 +34,22 @@ public class PlayerController : MonoBehaviour
     float staminaRecoveryDelayTimer;
     bool staminaRecoveryPaused;
 
+    GameManager gameManager;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
     {
+        if (gameManager.GetIsInMenu())
+        {
+            return;
+        }
+
         Walk();
         FlipSprite();
         if(attackLockoutTimer >= attackLockoutDuration)
@@ -70,6 +78,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (gameManager.GetIsInMenu())
+        {
+            return;
+        }
+
         attackLockoutTimer += Time.deltaTime;
         attackRootTimer += Time.deltaTime;
         rangedAttackTimer += Time.deltaTime;
@@ -88,7 +101,12 @@ public class PlayerController : MonoBehaviour
 
     void OnAttackMelee()
     {
-        if(staminaCurrent < Mathf.Epsilon)
+        if (gameManager.GetIsInMenu())
+        {
+            return;
+        }
+
+        if (staminaCurrent < Mathf.Epsilon)
         {
             return;
         }
@@ -113,6 +131,11 @@ public class PlayerController : MonoBehaviour
 
     void OnAttackRanged(InputValue value)
     {
+        if (gameManager.GetIsInMenu())
+        {
+            return;
+        }
+
         if (rangedAttackCooldown > rangedAttackTimer)
         {
             return;
