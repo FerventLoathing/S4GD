@@ -43,7 +43,7 @@ public class AttackV2 : MonoBehaviour
             Destroy(gameObject, 0.05f);
             if(!hasHit)
             {
-                Instantiate(particlesHit, transform.position, transform.rotation);
+                Instantiate(particlesHit, collision.transform.position, transform.rotation);
                 hasHit = true;
             }
             

@@ -49761,6 +49761,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 86ed77bc6fcb4f542a94896513fa09b4, type: 3}
+    - target: {fileID: 2688155021534832350, guid: c8cecdbc50657714d8f7be61aa47df6c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3575369686325850755, guid: c8cecdbc50657714d8f7be61aa47df6c, type: 3}
       propertyPath: player
       value: 
@@ -49849,10 +49853,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2c9d636063e7e6842993f301b2f2f622, type: 3}
+    - target: {fileID: 7833288946528692678, guid: c8cecdbc50657714d8f7be61aa47df6c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8174314705271723409, guid: c8cecdbc50657714d8f7be61aa47df6c, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 171c89ee80affc3468256c050db0f34b, type: 3}
+    - target: {fileID: 8174314705271723409, guid: c8cecdbc50657714d8f7be61aa47df6c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49914,6 +49926,10 @@ PrefabInstance:
     - target: {fileID: 1513191114113302770, guid: 8d02c48e80b1f9148acd0d52b2c3efeb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4289363472511217928, guid: 8d02c48e80b1f9148acd0d52b2c3efeb, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
