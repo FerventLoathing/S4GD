@@ -9,6 +9,8 @@ public class AttackV2 : MonoBehaviour
     MousePosition mousePosition;
     Vector2 attackDirection;
     [SerializeField] float projectileLifeDuration = 2f;
+    [SerializeField] GameObject particlesHit;
+    bool hasHit = false;
 
     void Start()
     {
@@ -39,6 +41,12 @@ public class AttackV2 : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject, 0.05f);
+            if(!hasHit)
+            {
+                Instantiate(particlesHit, transform.position, transform.rotation);
+                hasHit = true;
+            }
+            
         }
 
         if (collision.gameObject.tag == "Terrain")

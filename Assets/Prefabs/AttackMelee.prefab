@@ -178,3 +178,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 15
   projectileLifeDuration: 0.2
+  particlesHit: {fileID: 34294363753835613, guid: c4fb0da7ef088814c95d6bbc894458fe, type: 3}
