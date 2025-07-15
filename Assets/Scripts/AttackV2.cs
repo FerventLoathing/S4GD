@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,42 +16,55 @@ public class AttackV2 : MonoBehaviour
     {
         mousePosition = FindObjectOfType<MousePosition>();
         rb = GetComponent<Rigidbody2D>();
-        //attackDirection = (new Vector2(transform.position.x, transform.position.y) - mousePosition.GetMousePosition());
-        //attackDirection = (mousePosition.GetMousePosition() - new Vector2(transform.position.x, transform.position.y));
-        attackDirection = new Vector2(mousePosition.GetMousePosition().x - transform.position.x, mousePosition.GetMousePosition().y - transform.position.y).normalized;
-        //attackDirection = mousePosition.GetMousePosition();
+
+        attackDirection = new Vector2(
+            mousePosition.GetMousePosition().x - transform.position.x,
+            mousePosition.GetMousePosition().y - transform.position.y
+        ).normalized;
+
         Destroy(gameObject, projectileLifeDuration);
         FlipSprite();
     }
+
     void FlipSprite()
     {
         if (Mathf.Abs(attackDirection.x) > Mathf.Epsilon)
         {
-            //this flips the player sprite on the vertical axis, according to the movement command
             transform.localScale = new Vector2(Mathf.Sign(attackDirection.x), 1f);
         }
     }
+
     void Update()
     {
-        rb.velocity = (attackDirection * projectileSpeed);
+        rb.velocity = attackDirection * projectileSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        // Treffer gegen Gegner
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject, 0.05f);
-            if(!hasHit)
+            if (!hasHit)
             {
                 Instantiate(particlesHit, collision.transform.position, transform.rotation);
                 hasHit = true;
+
+                // Schaden zufügen, falls EnemyHealth vorhanden
+                EnemyHealth enemy = collision.gameObject.GetComponent<EnemyHealth>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(1);
+                }
             }
-            
+
+            Destroy(gameObject, 0.05f);
         }
 
-        if (collision.gameObject.tag == "Terrain")
+        // Treffer gegen Terrain
+        if (collision.gameObject.CompareTag("Terrain"))
         {
             Destroy(gameObject, 0.05f);
         }
     }
 }
+

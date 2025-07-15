@@ -1,4 +1,4 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -34,6 +34,13 @@ public class PlayerController : MonoBehaviour
     float staminaRecoveryDelayTimer;
     bool staminaRecoveryPaused;
 
+    [Header("Health")]
+    [SerializeField] int maxHealth = 5;
+    int currentHealth;
+
+    [Header("Respawn")]
+    [SerializeField] Transform spawnPoint;
+
     GameManager gameManager;
 
     void Start()
@@ -41,6 +48,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -52,23 +60,23 @@ public class PlayerController : MonoBehaviour
 
         Walk();
         FlipSprite();
-        if(attackLockoutTimer >= attackLockoutDuration)
+
+        if (attackLockoutTimer >= attackLockoutDuration)
         {
             myAnimator.SetBool("isAttacking", false);
         }
-        
-        if(staminaCurrent < staminaMax)
+
+        if (staminaCurrent < staminaMax)
         {
             if (!staminaRecoveryPaused)
             {
                 staminaCurrent += staminaRecoveryRate * Time.deltaTime;
-                staminaCurrent = Mathf.Clamp(staminaCurrent += staminaRecoveryRate * Time.deltaTime, staminaCurrent, staminaMax);
+                staminaCurrent = Mathf.Clamp(staminaCurrent, 0, staminaMax);
             }
-
             else
             {
                 staminaRecoveryDelayTimer += Time.deltaTime;
-                if(staminaRecoveryDelayTimer >= staminaRecoveryDelay)
+                if (staminaRecoveryDelayTimer >= staminaRecoveryDelay)
                 {
                     staminaRecoveryPaused = false;
                 }
@@ -86,9 +94,8 @@ public class PlayerController : MonoBehaviour
         attackLockoutTimer += Time.deltaTime;
         attackRootTimer += Time.deltaTime;
         rangedAttackTimer += Time.deltaTime;
-        //Debug.Log(rangedAttackTimer);
 
-        if(attackLockoutTimer >= attackLockoutDuration && isMeleeAttackQueued)
+        if (attackLockoutTimer >= attackLockoutDuration && isMeleeAttackQueued)
         {
             OnAttackMelee();
         }
@@ -126,7 +133,6 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetBool("isAttacking", true);
         attackLockoutTimer = 0f;
         attackRootTimer = 0f;
-
     }
 
     void OnAttackRanged(InputValue value)
@@ -140,25 +146,22 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+
         Instantiate(attack2, attackOrigin.position, transform.rotation);
         rangedAttackTimer = 0f;
     }
 
-
     void Walk()
     {
-        //Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
         Vector2 playerVelocity = moveInput * moveSpeed;
         if (attackRootDuration > attackRootTimer)
         {
-            playerVelocity = new Vector2(0, 0);
+            playerVelocity = Vector2.zero;
         }
 
         rb.velocity = playerVelocity;
 
-
-
-        if ((Mathf.Abs(moveInput.x) > Mathf.Epsilon | Mathf.Abs(moveInput.y) > Mathf.Epsilon) && attackRootDuration <= attackRootTimer)
+        if ((Mathf.Abs(moveInput.x) > Mathf.Epsilon || Mathf.Abs(moveInput.y) > Mathf.Epsilon) && attackRootDuration <= attackRootTimer)
         {
             myAnimator.SetBool("isMoving", true);
             lastMoveInput = moveInput;
@@ -173,7 +176,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Mathf.Abs(moveInput.x) > Mathf.Epsilon)
         {
-            //this flips the player sprite on the vertical axis, according to the movement command
             transform.localScale = new Vector2(Mathf.Sign(moveInput.x), 1f);
         }
     }
@@ -188,10 +190,12 @@ public class PlayerController : MonoBehaviour
     {
         return lastMoveInput;
     }
+
     public float GetRangedAttackCooldown()
     {
         return rangedAttackCooldown;
     }
+
     public float GetRangedAttackTimer()
     {
         return rangedAttackTimer;
@@ -206,4 +210,58 @@ public class PlayerController : MonoBehaviour
     {
         return staminaMax;
     }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        Debug.Log("Player took damage. Current HP: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Player died.");
+
+        if (spawnPoint != null)
+        {
+            transform.position = spawnPoint.position;
+        }
+        else
+        {
+            Debug.LogWarning("SpawnPoint not assigned in PlayerController!");
+        }
+
+        // Reset Stats
+        currentHealth = maxHealth;
+        staminaCurrent = staminaMax;
+
+        // Gegner respawnen
+        gameManager.ResetAllEnemies();
+
+        // Menü anzeigen
+        gameManager.SetIsInMenu(true);
+        gameManager.ToggleCanvasMenu(true);
+
+        // Bewegung stoppen & Animation zurücksetzen
+        moveInput = Vector2.zero;
+        lastMoveInput = Vector2.zero;
+        rb.velocity = Vector2.zero;
+        myAnimator.SetBool("isMoving", false);
+    }
 }
+
+

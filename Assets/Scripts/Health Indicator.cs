@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class HealthIndicator : MonoBehaviour
 {
-    float maxValue;
     [SerializeField] PlayerController player;
     Image image;
+
     void Start()
     {
-        image = this.GetComponent<Image>();
-        maxValue = player.GetRangedAttackCooldown();
+        image = GetComponent<Image>();
     }
 
     void Update()
     {
-        image.fillAmount = Mathf.Clamp(player.GetRangedAttackTimer() / maxValue, 0, 1);
+        float fillAmount = (float)player.GetCurrentHealth() / player.GetMaxHealth();
+        image.fillAmount = Mathf.Clamp01(fillAmount);
     }
 }
+

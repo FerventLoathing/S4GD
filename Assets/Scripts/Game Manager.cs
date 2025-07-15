@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject canvasMenu;
     [SerializeField] GameObject canvasDialogue;
 
+    // Liste aller Gegner
+    private List<GameObject> allEnemies = new List<GameObject>();
+
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
@@ -32,10 +35,10 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit(); // Beendet das Spiel
+        Application.Quit();
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // Beendet das Spiel im Unity-Editor
+        UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
 
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour
         isInMenu = value;
     }
 
-    private void ToggleCanvasMenu(bool active)
+    public void ToggleCanvasMenu(bool active)
     {
         canvasMenu.SetActive(active);
     }
@@ -58,4 +61,27 @@ public class GameManager : MonoBehaviour
     {
         canvasDialogue.SetActive(active);
     }
+
+    // Gegner registrieren
+    public void RegisterEnemy(GameObject enemy)
+    {
+        if (!allEnemies.Contains(enemy))
+        {
+            allEnemies.Add(enemy);
+        }
+    }
+
+    // Alle Gegner zurücksetzen
+    public void ResetAllEnemies()
+    {
+        foreach (var enemy in allEnemies)
+        {
+            if (enemy == null) continue;
+
+            enemy.transform.position = enemy.GetComponent<EnemyHealth>().GetStartPosition();
+            enemy.GetComponent<EnemyHealth>().ResetHealth();
+            enemy.SetActive(true);
+        }
+    }
 }
+
