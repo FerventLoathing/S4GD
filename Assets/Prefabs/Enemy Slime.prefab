@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4918657285630530434}
   - component: {fileID: 86774177604310050}
   - component: {fileID: 5728468888108662644}
+  - component: {fileID: 1125556416508686051}
+  - component: {fileID: 5471022366787062404}
+  - component: {fileID: 7193634308541470885}
   m_Layer: 7
   m_Name: Enemy Slime
   m_TagString: Enemy
@@ -171,6 +174,48 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.9}
   m_Size: {x: 1, y: 0.5}
   m_Direction: 1
+--- !u!114 &1125556416508686051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939611914760055917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d507e4d800e66284b90230e2b4327f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 6
+  moveSpeed: 2
+  stopDistance: 0.1
+--- !u!114 &5471022366787062404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939611914760055917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad790c88777fd734e8c574bef8d66e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  damageCooldown: 1
+--- !u!114 &7193634308541470885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939611914760055917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d847ee9541ef4d45840bd9761ffb454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
 --- !u!1 &6007542515998539695
 GameObject:
   m_ObjectHideFlags: 0
