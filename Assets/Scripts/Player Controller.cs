@@ -41,6 +41,17 @@ public class PlayerController : MonoBehaviour
     [Header("Respawn")]
     [SerializeField] Transform spawnPoint;
 
+    [Header("Knockback & Invincibility")]
+    [SerializeField] float knockbackForce = 5f;
+    [SerializeField] float knockbackDuration = 0.5f;
+    [SerializeField] float invincibilityDuration = 1.5f;
+    [SerializeField] SpriteRenderer spriteRenderer;
+
+    bool isKnockedBack = false;
+    float knockbackTimer = 0f;
+    bool isInvincible = false;
+    float invincibilityTimer = 0f;
+
     GameManager gameManager;
 
     void Start()
@@ -54,8 +65,26 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (gameManager.GetIsInMenu())
-        {
             return;
+
+        if (isKnockedBack)
+        {
+            knockbackTimer += Time.deltaTime;
+            if (knockbackTimer >= knockbackDuration)
+            {
+                isKnockedBack = false;
+                rb.velocity = Vector2.zero;
+            }
+        }
+
+        if (isInvincible)
+        {
+            invincibilityTimer += Time.deltaTime;
+            BlinkSprite();
+            if (invincibilityTimer >= invincibilityDuration)
+            {
+                EndInvincibility();
+            }
         }
 
         Walk();
@@ -87,9 +116,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (gameManager.GetIsInMenu())
-        {
             return;
-        }
 
         attackLockoutTimer += Time.deltaTime;
         attackRootTimer += Time.deltaTime;
@@ -108,15 +135,11 @@ public class PlayerController : MonoBehaviour
 
     void OnAttackMelee()
     {
-        if (gameManager.GetIsInMenu())
-        {
+        if (gameManager.GetIsInMenu() || isKnockedBack)
             return;
-        }
 
         if (staminaCurrent < Mathf.Epsilon)
-        {
             return;
-        }
 
         isMeleeAttackQueued = false;
         if (attackLockoutDuration > attackLockoutTimer)
@@ -137,15 +160,11 @@ public class PlayerController : MonoBehaviour
 
     void OnAttackRanged(InputValue value)
     {
-        if (gameManager.GetIsInMenu())
-        {
+        if (gameManager.GetIsInMenu() || isKnockedBack)
             return;
-        }
 
         if (rangedAttackCooldown > rangedAttackTimer)
-        {
             return;
-        }
 
         Instantiate(attack2, attackOrigin.position, transform.rotation);
         rangedAttackTimer = 0f;
@@ -153,6 +172,8 @@ public class PlayerController : MonoBehaviour
 
     void Walk()
     {
+        if (isKnockedBack) return;
+
         Vector2 playerVelocity = moveInput * moveSpeed;
         if (attackRootDuration > attackRootTimer)
         {
@@ -186,49 +207,80 @@ public class PlayerController : MonoBehaviour
         staminaRecoveryDelayTimer = 0f;
     }
 
-    public Vector2 GetLastMoveInput()
-    {
-        return lastMoveInput;
-    }
-
-    public float GetRangedAttackCooldown()
-    {
-        return rangedAttackCooldown;
-    }
-
-    public float GetRangedAttackTimer()
-    {
-        return rangedAttackTimer;
-    }
-
-    public float GetStaminaCurrent()
-    {
-        return staminaCurrent;
-    }
-
-    public float GetStaminaMax()
-    {
-        return staminaMax;
-    }
-
-    public int GetCurrentHealth()
-    {
-        return currentHealth;
-    }
-
-    public int GetMaxHealth()
-    {
-        return maxHealth;
-    }
+    public Vector2 GetLastMoveInput() => lastMoveInput;
+    public float GetRangedAttackCooldown() => rangedAttackCooldown;
+    public float GetRangedAttackTimer() => rangedAttackTimer;
+    public float GetStaminaCurrent() => staminaCurrent;
+    public float GetStaminaMax() => staminaMax;
+    public int GetCurrentHealth() => currentHealth;
+    public int GetMaxHealth() => maxHealth;
 
     public void TakeDamage(int amount)
     {
+        if (isInvincible) return;
+
         currentHealth -= amount;
         Debug.Log("Player took damage. Current HP: " + currentHealth);
 
         if (currentHealth <= 0)
         {
             Die();
+        }
+        else
+        {
+            ApplyKnockback();
+            StartInvincibility();
+        }
+    }
+
+    void ApplyKnockback()
+    {
+        isKnockedBack = true;
+        knockbackTimer = 0f;
+
+        Vector2 enemyPos = FindClosestEnemy();
+        Vector2 knockDirection = ((Vector2)transform.position - enemyPos).normalized;
+        rb.velocity = knockDirection * knockbackForce;
+
+        myAnimator.SetBool("isMoving", false);
+    }
+
+    Vector2 FindClosestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float minDist = Mathf.Infinity;
+        Vector2 closest = transform.position;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float dist = Vector2.Distance(transform.position, enemy.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = enemy.transform.position;
+            }
+        }
+
+        return closest;
+    }
+
+    void StartInvincibility()
+    {
+        isInvincible = true;
+        invincibilityTimer = 0f;
+    }
+
+    void EndInvincibility()
+    {
+        isInvincible = false;
+        spriteRenderer.enabled = true;
+    }
+
+    void BlinkSprite()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = Mathf.FloorToInt(invincibilityTimer * 10f) % 2 == 0;
         }
     }
 
@@ -245,23 +297,23 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("SpawnPoint not assigned in PlayerController!");
         }
 
-        // Reset Stats
         currentHealth = maxHealth;
         staminaCurrent = staminaMax;
 
-        // Gegner respawnen
         gameManager.ResetAllEnemies();
-
-        // Menü anzeigen
         gameManager.SetIsInMenu(true);
         gameManager.ToggleCanvasMenu(true);
 
-        // Bewegung stoppen & Animation zurücksetzen
         moveInput = Vector2.zero;
         lastMoveInput = Vector2.zero;
         rb.velocity = Vector2.zero;
         myAnimator.SetBool("isMoving", false);
+        isKnockedBack = false;
+        EndInvincibility();
     }
 }
+
+
+
 
 

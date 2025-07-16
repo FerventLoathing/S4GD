@@ -8,7 +8,7 @@ public class EnemyDamage : MonoBehaviour
     public float damageCooldown = 1f;
     private bool canDamage = true;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (canDamage && collision.gameObject.CompareTag("Player"))
         {
@@ -21,10 +21,11 @@ public class EnemyDamage : MonoBehaviour
         }
     }
 
-    private System.Collections.IEnumerator DamageCooldown()
+    private IEnumerator DamageCooldown()
     {
         canDamage = false;
         yield return new WaitForSeconds(damageCooldown);
         canDamage = true;
     }
 }
+
