@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     // Liste aller Gegner
     private List<GameObject> allEnemies = new List<GameObject>();
 
+
+    private void Start()
+    {
+        // Hides the system cursor
+        Cursor.visible = false;
+    }
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
@@ -18,6 +24,15 @@ public class GameManager : MonoBehaviour
             isInMenu = true;
             ToggleCanvasMenu(true);
             //QuitGame();
+        }
+
+        if (isInMenu)
+        {
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
         }
     }
 
