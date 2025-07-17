@@ -64,7 +64,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.GetIsInMenu())
+        if (gameManager.GetIsInMenu() == true)
+            ///I have no idea what I'm doing wrong here
+            //rb.velocity = new Vector2();
             return;
 
         if (isKnockedBack)

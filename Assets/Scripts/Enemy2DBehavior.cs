@@ -15,8 +15,12 @@ public class Enemy2DBehavior : MonoBehaviour
 
     private Vector3 startPosition;
 
+    GameManager gameManager;
+
+
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -35,6 +39,7 @@ public class Enemy2DBehavior : MonoBehaviour
 
     private void Update()
     {
+        if (gameManager.GetIsInMenu()) return;
         if (target == null) return;
 
         float distance = Vector2.Distance(transform.position, target.position);
