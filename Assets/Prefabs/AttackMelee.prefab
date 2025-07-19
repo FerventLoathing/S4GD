@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -1639763683
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78bc1a21bfa4efa429b0188db218e464, type: 3}
-  m_Color: {r: 0.95686275, g: 0.1254902, b: 0.4117647, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5b661df900cb9534fb012f25dd16a8d0, type: 3}
+  m_Color: {r: 0.6930847, g: 0.8396226, b: 0.8276405, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -148,7 +148,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 2}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &7573800981253913175
 MonoBehaviour:
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b94480c99685a64f895423565ce36a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 15
-  projectileLifeDuration: 0.2
+  projectileSpeed: 30
+  projectileLifeDuration: 0.1
 --- !u!114 &-5715882675353518464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9961d16e1164fb64296caa4f47ee1cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 15
+  projectileSpeed: 10
   projectileLifeDuration: 0.2
   particlesHit: {fileID: 34294363753835613, guid: c4fb0da7ef088814c95d6bbc894458fe, type: 3}

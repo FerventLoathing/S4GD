@@ -158,7 +158,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9ab5a226992f82747b8c91f62355eebf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -202,7 +202,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.9}
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.9, y: 0.5}
   m_Direction: 1
 --- !u!114 &6001521427079630981
 MonoBehaviour:
@@ -227,6 +227,12 @@ MonoBehaviour:
   staminaMax: 100
   staminaRecoveryRate: 34
   staminaRecoveryDelay: 0.5
+  maxHealth: 5
+  spawnPoint: {fileID: 0}
+  knockbackForce: 5
+  knockbackDuration: 0.5
+  invincibilityDuration: 1.5
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1598491518232965239
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 2566441315439414924}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
