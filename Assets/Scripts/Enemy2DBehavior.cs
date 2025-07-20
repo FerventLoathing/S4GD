@@ -61,8 +61,8 @@ public class Enemy2DBehavior : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * moveSpeed;
 
-        if (direction.x != 0)
-            transform.localScale = new Vector3(Mathf.Sign(direction.x), 1f, 1f);
+        /*if (direction.x != 0)
+            transform.localScale = new Vector3(Mathf.Sign(direction.x), 1f, 1f);*/
     }
 
     void StopMoving()
